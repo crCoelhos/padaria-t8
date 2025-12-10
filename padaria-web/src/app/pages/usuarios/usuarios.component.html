@@ -1,0 +1,78 @@
+<div class="card">
+  <div class="section-title">Usuarios</div>
+  <div class="card">
+    <div class="section-title">Buscar</div>
+    <div class="form-row">
+      <input [(ngModel)]="termoBusca" placeholder="termoBusca" />
+      <div class="actions">
+        <button class="btn btn-primary" (click)="buscar()">Buscar</button>
+      </div>
+    </div>
+    <table class="table" *ngIf="usuarios.length">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of usuarios">
+          <td>{{ u.id }}</td>
+          <td>{{ u.nome }}</td>
+          <td>{{ u.email }}</td>
+          <td class="actions">
+            <button class="btn" (click)="prepararEdicao(u)">Editar</button>
+            <button class="btn btn-danger" (click)="remover(u.id)">Remover</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <div class="section-title">Buscar por ID</div>
+    <div class="form-row">
+      <input type="number" [(ngModel)]="usuarioId" placeholder="ID" />
+      <div class="actions">
+        <button class="btn" (click)="buscarPorId()">Buscar por ID</button>
+      </div>
+    </div>
+    <pre *ngIf="usuarioEncontrado">{{ usuarioEncontrado | json }}</pre>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <div class="section-title">Inserir</div>
+    <div class="form-row">
+      <input [(ngModel)]="novoUsuario.nome" placeholder="nome" />
+      <input [(ngModel)]="novoUsuario.email" placeholder="email" />
+      <input [(ngModel)]="novoUsuario.senha" placeholder="senha" />
+      <input [(ngModel)]="novoUsuario.telefone" placeholder="telefone" />
+      <select [(ngModel)]="novoUsuario.tipoUsuario">
+        <option value="CLIENTE">CLIENTE</option>
+        <option value="ADMIN">ADMIN</option>
+      </select>
+      <div class="actions">
+        <button class="btn btn-success" (click)="inserir()">Inserir</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" *ngIf="editarUsuarioId" style="margin-top:1rem;">
+    <div class="section-title">Atualizar (ID: {{ editarUsuarioId }})</div>
+    <div class="form-row">
+      <input [(ngModel)]="usuarioEdicao.nome" placeholder="nome" />
+      <input [(ngModel)]="usuarioEdicao.email" placeholder="email" />
+      <input [(ngModel)]="usuarioEdicao.senha" placeholder="senha" />
+      <input [(ngModel)]="usuarioEdicao.telefone" placeholder="telefone" />
+      <select [(ngModel)]="usuarioEdicao.tipoUsuario">
+        <option value="CLIENTE">CLIENTE</option>
+        <option value="ADMIN">ADMIN</option>
+      </select>
+      <div class="actions">
+        <button class="btn btn-primary" (click)="atualizar()">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>

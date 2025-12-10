@@ -1,0 +1,57 @@
+<div class="card">
+  <div class="section-title">Pedidos</div>
+  <div class="card">
+    <div class="section-title">Buscar por ID</div>
+    <div class="form-row">
+      <input type="number" [(ngModel)]="pedidoId" placeholder="pedidoId" />
+      <div class="actions">
+        <button class="btn btn-primary" (click)="buscarPorId()">Buscar</button>
+      </div>
+    </div>
+    <pre *ngIf="pedidoEncontrado">{{ pedidoEncontrado | json }}</pre>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <div class="section-title">Criar Pedido</div>
+    <div class="form-row">
+      <input type="number" [(ngModel)]="novoPedido.usuarioId" placeholder="usuarioId" />
+    </div>
+    <div class="form-row">
+      <input type="number" [(ngModel)]="novoItem.produtoId" placeholder="produtoId" />
+      <input type="number" [(ngModel)]="novoItem.quantidade" placeholder="quantidade" />
+      <div class="actions">
+        <button class="btn" (click)="adicionarItem()">Adicionar item</button>
+      </div>
+    </div>
+    <table class="table" *ngIf="novoPedido.itens.length">
+      <thead>
+        <tr><th>Produto</th><th>Quantidade</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of novoPedido.itens; let i = index">
+          <td>{{ item.produtoId }}</td>
+          <td>{{ item.quantidade }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="actions" style="margin-top:.5rem;">
+      <button class="btn btn-success" (click)="criarPedido()">Criar</button>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <div class="section-title">Atualizar Status</div>
+    <div class="form-row">
+      <input type="number" [(ngModel)]="pedidoId" placeholder="pedidoId" />
+      <select [(ngModel)]="statusPedido">
+        <option value="EM_PREPARO">EM_PREPARO</option>
+        <option value="EM_ENTREGA">EM_ENTREGA</option>
+        <option value="FINALIZADO">FINALIZADO</option>
+        <option value="CANCELADO">CANCELADO</option>
+      </select>
+      <div class="actions">
+        <button class="btn" (click)="atualizarStatus()">Atualizar</button>
+      </div>
+    </div>
+  </div>
+</div>

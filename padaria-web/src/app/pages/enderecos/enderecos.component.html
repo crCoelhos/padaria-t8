@@ -1,0 +1,63 @@
+<div class="card">
+  <div class="section-title">Enderecos</div>
+  <div class="card">
+    <div class="section-title">Listar por Usuario</div>
+    <div class="form-row">
+      <input type="number" [(ngModel)]="usuarioIdList" placeholder="usuarioId" />
+      <div class="actions">
+        <button class="btn btn-primary" (click)="listar()">Listar</button>
+      </div>
+    </div>
+    <table class="table" *ngIf="enderecos.length">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Rua</th>
+          <th>Número</th>
+          <th>Bairro</th>
+          <th>Cidade</th>
+          <th>Estado</th>
+          <th>CEP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of enderecos">
+          <td>{{ e.id }}</td>
+          <td>{{ e.rua }}</td>
+          <td>{{ e.numero }}</td>
+          <td>{{ e.bairro }}</td>
+          <td>{{ e.cidade }}</td>
+          <td>{{ e.estado }}</td>
+          <td>{{ e.cep }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <div class="section-title">Adicionar para Usuario</div>
+    <div class="form-row">
+      <input type="number" [(ngModel)]="usuarioIdNovo" placeholder="usuarioId" />
+      <input [(ngModel)]="novoEndereco.rua" placeholder="rua" />
+      <input [(ngModel)]="novoEndereco.numero" placeholder="numero" />
+      <input [(ngModel)]="novoEndereco.bairro" placeholder="bairro" />
+      <input [(ngModel)]="novoEndereco.cidade" placeholder="cidade" />
+      <input [(ngModel)]="novoEndereco.estado" placeholder="estado" />
+      <input [(ngModel)]="novoEndereco.cep" placeholder="cep" />
+      <input [(ngModel)]="novoEndereco.complemento" placeholder="complemento" />
+      <div class="actions">
+        <button class="btn btn-success" (click)="adicionar()">Adicionar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <div class="section-title">Remover</div>
+    <div class="form-row">
+      <input type="number" [(ngModel)]="enderecoIdRemover" placeholder="enderecoId" />
+      <div class="actions">
+        <button class="btn btn-danger" (click)="remover()">Remover</button>
+      </div>
+    </div>
+  </div>
+</div>

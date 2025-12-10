@@ -1,0 +1,3 @@
+.grid-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.product-card{border:1px solid var(--border);border-radius:12px;padding:.75rem;background:#fff}
+.product-card .name{font-weight:600}

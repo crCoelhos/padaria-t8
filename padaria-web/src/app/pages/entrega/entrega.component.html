@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="section-title">Entrega</div>
+  <div class="card">
+    <div class="section-title">Agendar Entrega para Pedido</div>
+    <div class="form-row">
+      <input type="number" [(ngModel)]="pedidoId" placeholder="pedidoId" />
+      <input type="number" [(ngModel)]="dadosAgendamento.codigoConfirmacao" placeholder="codigoConfirmacao" />
+      <input [(ngModel)]="dadosAgendamento.previsaoEntrega" placeholder="previsaoEntrega ISO" />
+      <label>
+        <input type="checkbox" [(ngModel)]="dadosAgendamento.retirada" /> retirada
+      </label>
+      <input type="number" [(ngModel)]="dadosAgendamento.endereco.id" placeholder="enderecoId" />
+      <div class="actions">
+        <button class="btn btn-primary" (click)="agendar()">Agendar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <div class="section-title">Finalizar Entrega</div>
+    <div class="form-row">
+      <input type="number" [(ngModel)]="entregaIdFinalizar" placeholder="entregaId" />
+      <div class="actions">
+        <button class="btn btn-success" (click)="finalizar()">Finalizar</button>
+      </div>
+    </div>
+  </div>
+
+  <pre *ngIf="resultado">{{ resultado | json }}</pre>
+</div>

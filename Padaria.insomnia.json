@@ -1,0 +1,299 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-12-10T15:15:00Z",
+  "__export_source": "api_padaria:insomnia",
+  "resources": [
+    {
+      "_id": "wrk_padaria",
+      "_type": "workspace",
+      "name": "API Padaria",
+      "scope": "collection"
+    },
+    {
+      "_id": "env_padaria_base",
+      "_type": "environment",
+      "parentId": "wrk_padaria",
+      "name": "Base Environment",
+      "data": {
+        "baseUrl": "http://localhost:8081"
+      }
+    },
+    {
+      "_id": "fld_usuarios",
+      "_type": "request_group",
+      "parentId": "wrk_padaria",
+      "name": "Usuarios"
+    },
+    {
+      "_id": "req_usuarios_get_id",
+      "_type": "request",
+      "parentId": "fld_usuarios",
+      "name": "Usuarios - Buscar por ID",
+      "method": "GET",
+      "url": "{{ baseUrl }}/usuarios/buscar/1"
+    },
+    {
+      "_id": "req_usuarios_buscar",
+      "_type": "request",
+      "parentId": "fld_usuarios",
+      "name": "Usuarios - Buscar (termoBusca)",
+      "method": "GET",
+      "url": "{{ baseUrl }}/usuarios/buscar",
+      "parameters": [
+        { "name": "termoBusca", "value": "joao" }
+      ]
+    },
+    {
+      "_id": "req_usuarios_inserir",
+      "_type": "request",
+      "parentId": "fld_usuarios",
+      "name": "Usuarios - Inserir",
+      "method": "POST",
+      "url": "{{ baseUrl }}/usuarios/inserir",
+      "headers": [ { "name": "Content-Type", "value": "application/json" } ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nome\": \"João da Silva\",\n  \"email\": \"joao@example.com\",\n  \"senha\": \"senha123\",\n  \"telefone\": \"11999999999\",\n  \"tipoUsuario\": \"CLIENTE\"\n}"
+      }
+    },
+    {
+      "_id": "req_usuarios_atualizar",
+      "_type": "request",
+      "parentId": "fld_usuarios",
+      "name": "Usuarios - Atualizar",
+      "method": "PUT",
+      "url": "{{ baseUrl }}/usuarios/atualizar/1",
+      "headers": [ { "name": "Content-Type", "value": "application/json" } ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"id\": 1,\n  \"nome\": \"João Atualizado\",\n  \"email\": \"joao@example.com\",\n  \"senha\": \"novaSenha\",\n  \"telefone\": \"11999999999\",\n  \"tipoUsuario\": \"CLIENTE\"\n}"
+      }
+    },
+    {
+      "_id": "req_usuarios_remover",
+      "_type": "request",
+      "parentId": "fld_usuarios",
+      "name": "Usuarios - Remover",
+      "method": "DELETE",
+      "url": "{{ baseUrl }}/usuarios/remover/1"
+    },
+    {
+      "_id": "fld_categorias",
+      "_type": "request_group",
+      "parentId": "wrk_padaria",
+      "name": "Categorias"
+    },
+    {
+      "_id": "req_categorias_get_id",
+      "_type": "request",
+      "parentId": "fld_categorias",
+      "name": "Categorias - Buscar por ID",
+      "method": "GET",
+      "url": "{{ baseUrl }}/categorias/buscar/1"
+    },
+    {
+      "_id": "req_categorias_buscar",
+      "_type": "request",
+      "parentId": "fld_categorias",
+      "name": "Categorias - Buscar (termoBusca)",
+      "method": "GET",
+      "url": "{{ baseUrl }}/categorias/buscar",
+      "parameters": [ { "name": "termoBusca", "value": "pao" } ]
+    },
+    {
+      "_id": "req_categorias_inserir",
+      "_type": "request",
+      "parentId": "fld_categorias",
+      "name": "Categorias - Inserir",
+      "method": "POST",
+      "url": "{{ baseUrl }}/categorias/inserir",
+      "headers": [ { "name": "Content-Type", "value": "application/json" } ],
+      "body": { "mimeType": "application/json", "text": "{\n  \"nome\": \"Pães\",\n  \"descricao\": \"Assados em geral\"\n}" }
+    },
+    {
+      "_id": "req_categorias_atualizar",
+      "_type": "request",
+      "parentId": "fld_categorias",
+      "name": "Categorias - Atualizar",
+      "method": "PUT",
+      "url": "{{ baseUrl }}/categorias/atualizar",
+      "headers": [ { "name": "Content-Type", "value": "application/json" } ],
+      "body": { "mimeType": "application/json", "text": "{\n  \"id\": 1,\n  \"nome\": \"Pães Especiais\",\n  \"descricao\": \"Assados artesanais\"\n}" }
+    },
+    {
+      "_id": "req_categorias_remover",
+      "_type": "request",
+      "parentId": "fld_categorias",
+      "name": "Categorias - Remover",
+      "method": "DELETE",
+      "url": "{{ baseUrl }}/categorias/remover/1"
+    },
+    {
+      "_id": "fld_produtos",
+      "_type": "request_group",
+      "parentId": "wrk_padaria",
+      "name": "Produtos"
+    },
+    {
+      "_id": "req_produtos_get_id",
+      "_type": "request",
+      "parentId": "fld_produtos",
+      "name": "Produtos - Buscar por ID",
+      "method": "GET",
+      "url": "{{ baseUrl }}/produtos/1"
+    },
+    {
+      "_id": "req_produtos_buscar",
+      "_type": "request",
+      "parentId": "fld_produtos",
+      "name": "Produtos - Buscar (termoBusca)",
+      "method": "GET",
+      "url": "{{ baseUrl }}/produtos",
+      "parameters": [ { "name": "termoBusca", "value": "pao" } ]
+    },
+    {
+      "_id": "req_produtos_inserir",
+      "_type": "request",
+      "parentId": "fld_produtos",
+      "name": "Produtos - Inserir",
+      "method": "POST",
+      "url": "{{ baseUrl }}/produtos",
+      "headers": [ { "name": "Content-Type", "value": "application/json" } ],
+      "body": { "mimeType": "application/json", "text": "{\n  \"nome\": \"Pão Francês\",\n  \"descricao\": \"Pão fresco\",\n  \"ativo\": true,\n  \"preco\": 0.50,\n  \"categoria\": { \"id\": 1 }\n}" }
+    },
+    {
+      "_id": "req_produtos_atualizar",
+      "_type": "request",
+      "parentId": "fld_produtos",
+      "name": "Produtos - Atualizar",
+      "method": "PUT",
+      "url": "{{ baseUrl }}/produtos",
+      "headers": [ { "name": "Content-Type", "value": "application/json" } ],
+      "body": { "mimeType": "application/json", "text": "{\n  \"id\": 1,\n  \"nome\": \"Pão Francês Especial\",\n  \"descricao\": \"Pão fresco e crocante\",\n  \"ativo\": true,\n  \"preco\": 0.75,\n  \"categoria\": { \"id\": 1 }\n}" }
+    },
+    {
+      "_id": "req_produtos_remover",
+      "_type": "request",
+      "parentId": "fld_produtos",
+      "name": "Produtos - Remover",
+      "method": "DELETE",
+      "url": "{{ baseUrl }}/produtos/1"
+    },
+    {
+      "_id": "req_produtos_add_imagem",
+      "_type": "request",
+      "parentId": "fld_produtos",
+      "name": "Produtos - Adicionar Imagens",
+      "method": "POST",
+      "url": "{{ baseUrl }}/produtos/1/imagem",
+      "body": {
+        "mimeType": "multipart/form-data",
+        "params": [
+          { "name": "files", "type": "file", "fileName": "C:/caminho/arquivo1.jpg" },
+          { "name": "files", "type": "file", "fileName": "C:/caminho/arquivo2.jpg" },
+          { "name": "publica", "type": "text", "value": "true" }
+        ]
+      }
+    },
+    {
+      "_id": "req_produtos_remover_imagem",
+      "_type": "request",
+      "parentId": "fld_produtos",
+      "name": "Produtos - Remover Imagem",
+      "method": "DELETE",
+      "url": "{{ baseUrl }}/produtos/1/imagem",
+      "parameters": [ { "name": "nomeArquivo", "value": "arquivo.jpg" } ]
+    },
+    {
+      "_id": "fld_enderecos",
+      "_type": "request_group",
+      "parentId": "wrk_padaria",
+      "name": "Enderecos"
+    },
+    {
+      "_id": "req_enderecos_listar_usuario",
+      "_type": "request",
+      "parentId": "fld_enderecos",
+      "name": "Enderecos - Listar por Usuario",
+      "method": "GET",
+      "url": "{{ baseUrl }}/enderecos/usuario/1"
+    },
+    {
+      "_id": "req_enderecos_adicionar",
+      "_type": "request",
+      "parentId": "fld_enderecos",
+      "name": "Enderecos - Adicionar",
+      "method": "POST",
+      "url": "{{ baseUrl }}/enderecos/usuario/1",
+      "headers": [ { "name": "Content-Type", "value": "application/json" } ],
+      "body": { "mimeType": "application/json", "text": "{\n  \"rua\": \"Rua A\",\n  \"numero\": \"123\",\n  \"bairro\": \"Centro\",\n  \"cidade\": \"São Paulo\",\n  \"estado\": \"SP\",\n  \"cep\": \"01000-000\",\n  \"complemento\": \"Apto 10\"\n}" }
+    },
+    {
+      "_id": "req_enderecos_remover",
+      "_type": "request",
+      "parentId": "fld_enderecos",
+      "name": "Enderecos - Remover",
+      "method": "DELETE",
+      "url": "{{ baseUrl }}/enderecos/1"
+    },
+    {
+      "_id": "fld_pedidos",
+      "_type": "request_group",
+      "parentId": "wrk_padaria",
+      "name": "Pedidos"
+    },
+    {
+      "_id": "req_pedidos_get_id",
+      "_type": "request",
+      "parentId": "fld_pedidos",
+      "name": "Pedidos - Buscar por ID",
+      "method": "GET",
+      "url": "{{ baseUrl }}/pedidos/1"
+    },
+    {
+      "_id": "req_pedidos_criar",
+      "_type": "request",
+      "parentId": "fld_pedidos",
+      "name": "Pedidos - Criar",
+      "method": "POST",
+      "url": "{{ baseUrl }}/pedidos",
+      "headers": [ { "name": "Content-Type", "value": "application/json" } ],
+      "body": { "mimeType": "application/json", "text": "{\n  \"usuarioId\": 1,\n  \"itens\": [\n    { \"produtoId\": 1, \"quantidade\": 2 },\n    { \"produtoId\": 3, \"quantidade\": 1 }\n  ]\n}" }
+    },
+    {
+      "_id": "req_pedidos_status",
+      "_type": "request",
+      "parentId": "fld_pedidos",
+      "name": "Pedidos - Atualizar Status",
+      "method": "PATCH",
+      "url": "{{ baseUrl }}/pedidos/1/status",
+      "headers": [ { "name": "Content-Type", "value": "application/json" } ],
+      "body": { "mimeType": "application/json", "text": "{\n  \"statusPedido\": \"EM_PREPARO\"\n}" }
+    },
+    {
+      "_id": "fld_entrega",
+      "_type": "request_group",
+      "parentId": "wrk_padaria",
+      "name": "Entrega"
+    },
+    {
+      "_id": "req_entrega_agendar",
+      "_type": "request",
+      "parentId": "fld_entrega",
+      "name": "Entrega - Agendar",
+      "method": "POST",
+      "url": "{{ baseUrl }}/entrega/pedido/1",
+      "headers": [ { "name": "Content-Type", "value": "application/json" } ],
+      "body": { "mimeType": "application/json", "text": "{\n  \"codigoConfirmacao\": 123456,\n  \"previsaoEntrega\": \"2025-12-20T12:00:00Z\",\n  \"retirada\": false,\n  \"endereco\": { \"id\": 1 }\n}" }
+    },
+    {
+      "_id": "req_entrega_finalizar",
+      "_type": "request",
+      "parentId": "fld_entrega",
+      "name": "Entrega - Finalizar",
+      "method": "PATCH",
+      "url": "{{ baseUrl }}/entrega/1/finalizar"
+    }
+  ]
+}

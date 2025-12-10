@@ -1,0 +1,98 @@
+<div class="card">
+  <div class="section-title">Produtos</div>
+  <div class="card">
+    <div class="section-title">Buscar</div>
+    <div class="form-row">
+      <input [(ngModel)]="termoBusca" placeholder="termoBusca" />
+      <div class="actions">
+        <button class="btn btn-primary" (click)="buscar()">Buscar</button>
+      </div>
+    </div>
+    <table class="table" *ngIf="produtos.length">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Preço</th>
+          <th>Categoria</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of produtos">
+          <td>{{ p.id }}</td>
+          <td>{{ p.nome }}</td>
+          <td>R$ {{ p.preco }}</td>
+          <td>{{ p.categoria.id }}</td>
+          <td class="actions">
+            <button class="btn" (click)="prepararEdicao(p)">Editar</button>
+            <button class="btn btn-danger" (click)="remover(p.id)">Remover</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <div class="section-title">Buscar por ID</div>
+    <div class="form-row">
+      <input type="number" [(ngModel)]="produtoId" placeholder="ID" />
+      <div class="actions">
+        <button class="btn" (click)="buscarPorId()">Buscar por ID</button>
+      </div>
+    </div>
+    <pre *ngIf="produtoEncontrado">{{ produtoEncontrado | json }}</pre>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <div class="section-title">Inserir</div>
+    <div class="form-row">
+      <input [(ngModel)]="novoProduto.nome" placeholder="nome" />
+      <input [(ngModel)]="novoProduto.descricao" placeholder="descricao" />
+      <input type="number" [(ngModel)]="novoProduto.preco" placeholder="preco" />
+      <label>
+        <input type="checkbox" [(ngModel)]="novoProduto.ativo" /> ativo
+      </label>
+      <input type="number" [(ngModel)]="novoProduto.categoria.id" placeholder="categoriaId" />
+      <div class="actions">
+        <button class="btn btn-success" (click)="inserir()">Inserir</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" *ngIf="editarProduto" style="margin-top:1rem;">
+    <div class="section-title">Atualizar (ID: {{ produtoEdicao.id }})</div>
+    <div class="form-row">
+      <input [(ngModel)]="produtoEdicao.nome" placeholder="nome" />
+      <input [(ngModel)]="produtoEdicao.descricao" placeholder="descricao" />
+      <input type="number" [(ngModel)]="produtoEdicao.preco" placeholder="preco" />
+      <label>
+        <input type="checkbox" [(ngModel)]="produtoEdicao.ativo" /> ativo
+      </label>
+      <input type="number" [(ngModel)]="produtoEdicao.categoria.id" placeholder="categoriaId" />
+      <div class="actions">
+        <button class="btn btn-primary" (click)="atualizar()">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <div class="section-title">Imagens do Produto</div>
+    <div class="form-row">
+      <input type="number" [(ngModel)]="produtoId" placeholder="ID do produto" />
+      <input type="file" (change)="selecionarArquivos($event)" multiple />
+      <label>
+        <input type="checkbox" [(ngModel)]="publica" /> pública
+      </label>
+      <div class="actions">
+        <button class="btn" (click)="uploadImagens()">Enviar imagens</button>
+      </div>
+    </div>
+    <div class="form-row" style="margin-top:.5rem;">
+      <input [(ngModel)]="nomeArquivoRemover" placeholder="nomeArquivo.jpg" />
+      <div class="actions">
+        <button class="btn btn-danger" (click)="removerImagem()">Remover imagem</button>
+      </div>
+    </div>
+  </div>
+</div>

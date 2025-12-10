@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="section-title">Produtos Disponíveis</div>
+  <div *ngIf="carregando">Carregando...</div>
+  <table class="table" *ngIf="!carregando && produtos.length">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Preço</th>
+        <th>Ativo</th>
+        <th>Categoria</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of produtos">
+        <td>{{ p.id }}</td>
+        <td>{{ p.nome }}</td>
+        <td>R$ {{ p.preco | number:'1.2-2' }}</td>
+        <td>{{ p.ativo ? 'Sim' : 'Não' }}</td>
+        <td>{{ p.categoria.id }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="!carregando && !produtos.length" style="color:var(--muted)">Nenhum produto disponível.</div>
+</div>

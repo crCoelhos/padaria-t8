@@ -1,0 +1,66 @@
+<div class="card">
+  <div class="section-title">Categorias</div>
+  <div class="card">
+    <div class="section-title">Buscar</div>
+    <div class="form-row">
+      <input [(ngModel)]="termoBusca" placeholder="termoBusca" />
+      <div class="actions">
+        <button class="btn btn-primary" (click)="buscar()">Buscar</button>
+      </div>
+    </div>
+    <table class="table" *ngIf="categorias.length">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of categorias">
+          <td>{{ c.id }}</td>
+          <td>{{ c.nome }}</td>
+          <td>{{ c.descricao }}</td>
+          <td class="actions">
+            <button class="btn" (click)="prepararEdicao(c)">Editar</button>
+            <button class="btn btn-danger" (click)="remover(c.id)">Remover</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <div class="section-title">Buscar por ID</div>
+    <div class="form-row">
+      <input type="number" [(ngModel)]="categoriaId" placeholder="ID" />
+      <div class="actions">
+        <button class="btn" (click)="buscarPorId()">Buscar por ID</button>
+      </div>
+    </div>
+    <pre *ngIf="categoriaEncontrada">{{ categoriaEncontrada | json }}</pre>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <div class="section-title">Inserir</div>
+    <div class="form-row">
+      <input [(ngModel)]="novaCategoria.nome" placeholder="nome" />
+      <input [(ngModel)]="novaCategoria.descricao" placeholder="descricao" />
+      <div class="actions">
+        <button class="btn btn-success" (click)="inserir()">Inserir</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" *ngIf="editarCategoria" style="margin-top:1rem;">
+    <div class="section-title">Atualizar (ID: {{ categoriaEdicao.id }})</div>
+    <div class="form-row">
+      <input [(ngModel)]="categoriaEdicao.nome" placeholder="nome" />
+      <input [(ngModel)]="categoriaEdicao.descricao" placeholder="descricao" />
+      <div class="actions">
+        <button class="btn btn-primary" (click)="atualizar()">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
