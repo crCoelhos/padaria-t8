@@ -11,11 +11,7 @@ export interface Usuario {
   tipoUsuario?: string;
 }
 
-export interface Categoria {
-  id?: number;
-  nome: string;
-  descricao?: string;
-}
+export interface Categoria { id: number; nome?: string; descricao?: string };
 
 export interface Produto {
   id?: number;
@@ -23,7 +19,7 @@ export interface Produto {
   descricao?: string;
   ativo: boolean;
   preco: number;
-  categoria: { id: number; nome?: string; descricao?: string };
+  categoria: Categoria
   imagens?: string[];
 }
 
@@ -54,8 +50,34 @@ export interface Pedido {
   providedIn: 'root'
 })
 export class PadariaApiService {
-  private baseUrl = '/api';
+  private baseUrl = "api"
 
   constructor(private http: HttpClient) { }
+
+
+
+  buscarProdutos(termoBusca: string): Observable<Produto> {
+    const params = new HttpParams().set('termoBusca', termoBusca);
+    return this.http.get<Produto>(`${this.baseUrl}/produtos`, { params })
+  }
+
+  getProdutosById(id: number): Observable<Produto> {
+    return this.http.get<Produto>(`${this.baseUrl}/produtos/${id}}`)
+  }
+
+  inserirProdutos(produto: Produto): Observable<Produto> {
+    return this.http.post<Produto>(`${this.baseUrl}/produtos`, produto)
+  }
+
+  removerProduto(produto: Produto): Observable<Produto> {
+    return this.http.delete<Produto>(`${this.baseUrl}/produtos/${produto}}`)
+  }
+
+  atualizarProduto(produto: Produto): Observable<Produto> {
+    return this.http.put<Produto>(`${this.baseUrl}/produtos`, produto)
+  }
+
+
+
 
 }
