@@ -23,7 +23,8 @@ export interface Produto {
   descricao?: string;
   ativo: boolean;
   preco: number;
-  categoria: { id: number };
+  categoria: { id: number; nome?: string; descricao?: string };
+  imagens?: string[];
 }
 
 export interface Endereco {
@@ -53,7 +54,7 @@ export interface Pedido {
   providedIn: 'root'
 })
 export class PadariaApiService {
-  private baseUrl = '';
+  private baseUrl = '/api';
 
   constructor(private http: HttpClient) {}
 

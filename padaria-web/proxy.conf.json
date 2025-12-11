@@ -1,32 +1,10 @@
 {
-  "/usuarios": {
+  "/api": {
     "target": "http://localhost:8081",
     "secure": false,
-    "changeOrigin": true
-  },
-  "/categorias": {
-    "target": "http://localhost:8081",
-    "secure": false,
-    "changeOrigin": true
-  },
-  "/produtos": {
-    "target": "http://localhost:8081",
-    "secure": false,
-    "changeOrigin": true
-  },
-  "/enderecos": {
-    "target": "http://localhost:8081",
-    "secure": false,
-    "changeOrigin": true
-  },
-  "/pedidos": {
-    "target": "http://localhost:8081",
-    "secure": false,
-    "changeOrigin": true
-  },
-  "/entrega": {
-    "target": "http://localhost:8081",
-    "secure": false,
-    "changeOrigin": true
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
   }
 }
